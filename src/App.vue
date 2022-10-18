@@ -1,17 +1,35 @@
 <template>
   <h1>Task App</h1>
   <ul>
-    <li><RouterLink :to="{name: 'home'}">Home</RouterLink></li>
-    <li><RouterLink :to="{name: 'login'}">Login</RouterLink></li>
+      <li>
+          <router-link :to="{name: 'home'}">Home</router-link>
+      </li>
+      <li>
+          <router-link :to="{name: 'login'}">Login</router-link>
+      </li>
+      <li>
+          <router-link :to="{name: 'registro'}">Registro</router-link>
+      </li>
+
   </ul>
   <router-view></router-view>
 </template>
-
 <script setup>
-import { createClient } from '@supabase/supabase-js'
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY)
-console.log(supabase)
-</script>
+import { onMounted } from 'vue';
+import { login, newTask } from './api'
 
+onMounted(async () => {
+  // const id = await login('alberto.ramirez@ironhack.com', '1234567');
+  // newTask({
+  //     user_id: id,
+  //     title: 'Titulo',
+  //     description: 'Descripcion de otro task'
+  // })
+
+})
+
+
+</script>
 <style scoped>
+
 </style>
