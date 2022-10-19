@@ -1,6 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY)
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
+
+export const supabase = createClient(supabaseUrl, supabaseKey)
 
 export const registro = async (email, password) => {
     const response = await supabase.auth.signUp({
@@ -11,14 +14,14 @@ export const registro = async (email, password) => {
     console.log(response)
 }
 
-export const login = async (email, password) => {
+export const logIn = async (email, password) => {
     const response = await supabase.auth.signInWithPassword({
         email,
         password
-
     })
-    return response.data.user.id
+    return response.data
 }
+
 
 /*
 task: {

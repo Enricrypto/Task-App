@@ -5,3 +5,22 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 ## Recommended IDE Setup
 
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+
+const onSubmit = async () => {
+  try {
+    const response = await supabase.auth.signInWithPassword({
+      email: email.value,
+      password: password.value
+    });
+    console.log(response.error)
+    if (!response.error) {
+      console.log('inicio de sesion exitosa')
+    } else {
+      console.log ('Error inicio')
+    }
+    router.push({ name: 'home' })
+  } catch (error) {
+    alert(error.error_description || error.message);
+  }
+};
