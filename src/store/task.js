@@ -11,17 +11,9 @@ export const useTaskStore = defineStore("task", {
     };
   },
   actions: {
-    setTask() {
+    setTask(response) {
       //TODO guardar en el stado las task que nos de supabase
-      {
-        const task = {
-            id: this.tasks.length + 1,
-            message: message,
-            user: user,
-            date: new Date()
-        }
-        this.tasks.push(task);
-    }
+      this.tasks.push(response);
     },
 
     updateTask(id, task) {
@@ -34,18 +26,22 @@ export const useTaskStore = defineStore("task", {
       // Encontramos el indice de ese id y eliminamos ese indice de la array
     },
 
-    addTask(message, user) {
+    addTask(task) {
       // TODO modificar el estado de task haciendo un push de la task
-      {
-        const task = {
-          id: this.tasks.length + 1,
-          message: message,
-          user: user,
-          date: new Date(),
-        };
-        this.tasks.push(task);
-      }
+      this.tasks.push(task);
       // Comprobar que tenemos el id al insertar el registro, en caso de no tenerlo tendriamos que hacer el getTask
     },
+  },
+  persist: {
+    // Nos activa la persistencia del store
+    enabled: true,
+    strategies: [
+      {
+        // Key del store
+        key: "task",
+        // donde guarda el store
+        storage: localStorage,
+      },
+    ],
   },
 });

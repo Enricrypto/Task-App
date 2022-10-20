@@ -19,7 +19,7 @@
         </div>
         <div class="field">
           <div class="control">
-            <input class="button is-link is-fullwidth" type="submit" placeholder="Text input">
+            <button class="button is-link is-fullwidth" type="submit" placeholder="Text input">SUBMIT</button>
 
           </div>
         </div>
@@ -33,7 +33,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../store/auth'
-import { logIn, supabase } from '../API'
+import { logIn, getTasks } from '../API'
 
 
 const router = useRouter();
@@ -47,7 +47,7 @@ const onSubmit = async () => {
     const data = await logIn(email.value, password.value)
     if (data.user) {
       const id = data.user.id
-      authStore.login(email.value, password.value, id) 
+      authStore.login(email.value, password.value, id)
       router.push({ name: 'home' })
     } else {
       alert('usuario o contraseña invalida')
@@ -56,6 +56,8 @@ const onSubmit = async () => {
     console.log(error.error_description || error.message);
   }
 };
+
+
 
 
 </script>
