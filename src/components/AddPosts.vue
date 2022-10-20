@@ -38,7 +38,7 @@ const onSubmit = async () => {
     }
     const response = await supabase.from('task')
         .insert({
-            user_id: id,
+            user_id:
             title: title.value,
             description: message.value,
         })
