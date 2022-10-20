@@ -1,21 +1,12 @@
 <template>
-  <ul>
-    <li>
-      <router-link :to="{name: 'home'}">Home</router-link>
-    </li>
-    <li>
-      <router-link :to="{name: 'login'}">Login</router-link>
-    </li>
-    <li>
-      <router-link :to="{name: 'signup'}">Sign Up</router-link>
-    </li>
-  </ul>
+  <Navbar />
   <router-view></router-view>
 </template>
 <script setup>
 
 import { onMounted } from 'vue';
 import { logIn } from './API'
+import Navbar from './components/Navbar.vue';
 
 onMounted(async () => {
   //const id = await logIn('eibarraf@gmail.com', '1234567');

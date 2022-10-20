@@ -1,4 +1,5 @@
 <template>
+   
     <div class="section">
         <div class="container">
             <article v-if="!authStore.isAuth" class="message is-danger">
@@ -12,14 +13,24 @@
             <div v-else>
                 <div class="title"> Hola {{authStore.user.email}} </div>
                 <button @click="authStore.logout()" class="button is-danger">Cerrar Sesión</button>
-                </div>
             </div>
         </div>
+    </div>
+    <div>
+        <AddPosts />
+    </div>
+
 </template>
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useAuthStore } from '../store/auth'
+import AddPosts from '../components/AddPosts.vue'
+import GetPosts from '../components/GetPosts.vue';
 
 const authStore = useAuthStore();
+
+
+
 
 </script>
 <style scoped>
