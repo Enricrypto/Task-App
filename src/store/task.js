@@ -1,3 +1,4 @@
+import { slotFlagsText } from "@vue/shared";
 import { defineStore } from "pinia";
 import { newTask, getTasks, updateTask, deleteTask } from "../API/index";
 
@@ -11,11 +12,11 @@ export const useTaskStore = defineStore("task", {
     };
   },
   actions: {
-    setTask(response) {
-      //TODO guardar en el stado las task que nos de supabase
-      this.tasks.push(response);
+    async setTask() {
+      const response = await getTasks()
+      this.tasks = await response
+      console.log(this.tasks)
     },
-
     updateTask(id, task) {
       // TODO modificar el estado de la task
       // Encontrar el indice de la task con ese id y cambiar su contenido con task
@@ -23,6 +24,11 @@ export const useTaskStore = defineStore("task", {
 
     deleteTask(id) {
       // TODO modificar el estado borrando esa task
+      const findIndex = this.tasks.findIndex((elem) => {
+        return elem.id === id
+      }) 
+      console.log("este es el index", findIndex)
+      return this.tasks.splice(findIndex, 1)
       // Encontramos el indice de ese id y eliminamos ese indice de la array
     },
 

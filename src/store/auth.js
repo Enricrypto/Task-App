@@ -10,9 +10,8 @@ export const useAuthStore = defineStore('auth', {
       // Guardaremos el id de supabase que nos dara al hacer el login
        id: undefined,
       user: {
-        name: '',
-        email: '',
-        password: ''
+        name: undefined,
+        email: undefined,
       }
     };
   },

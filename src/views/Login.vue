@@ -30,11 +30,10 @@
 
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../store/auth'
-import { logIn, getTasks } from '../API'
-
+import { logIn } from '../API'
 
 const router = useRouter();
 const authStore = useAuthStore();

@@ -31,9 +31,15 @@ const title = ref('');
 const id = authStore.id;
 const email = authStore.user.email;
 
+
 const onSubmit = async () => {
     const response = await newTask(id, title.value, message.value)
+    const task = {title:title.value, description:message.value, created_at: new Date()}
+    taskStore.addTask(task)
+    message.value = ''
+    title.value = ''
 }
+
 
 </script>
 
