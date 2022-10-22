@@ -15,10 +15,13 @@ export const useTaskStore = defineStore("task", {
     async setTask() {
       const response = await getTasks()
       this.tasks = await response
-      console.log(this.tasks)
     },
     updateTask(id, task) {
       // TODO modificar el estado de la task
+      const findIndex = this.tasks.findIndex((elem) => {
+        return elem.id === id
+        
+      }) 
       // Encontrar el indice de la task con ese id y cambiar su contenido con task
     },
 
@@ -27,14 +30,15 @@ export const useTaskStore = defineStore("task", {
       const findIndex = this.tasks.findIndex((elem) => {
         return elem.id === id
       }) 
-      console.log("este es el index", findIndex)
       return this.tasks.splice(findIndex, 1)
       // Encontramos el indice de ese id y eliminamos ese indice de la array
     },
 
-    addTask(task) {
+    async addTask(task) {
       // TODO modificar el estado de task haciendo un push de la task
-      this.tasks.push(task);
+      //this.tasks.push(task);
+      const response = await getTasks()
+      this.tasks = await response
       // Comprobar que tenemos el id al insertar el registro, en caso de no tenerlo tendriamos que hacer el getTask
     },
   },

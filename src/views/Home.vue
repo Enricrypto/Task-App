@@ -19,8 +19,9 @@
                 <div class="section" v-for="task in taskStore.tasks" :key="task.id">
                     <div>{{task.title}} - {{task.created_at}} </div>
                     <div>{{task.description}}</div>
-                    <button @click="eliminateTask(task.id)">Eliminar {{task.id}}</button>
-                    <button>Marcar como hecho</button>
+                    <button @click="eliminateTask(task.id)">Eliminar</button>
+                    <button @click="doneTask(task.id)">Marcar como hecho</button>
+                    <button @click="editTask(task.id)">Editar</button>
                 </div>
             </div>
         </div>
@@ -30,7 +31,7 @@
 import { ref, onMounted, pushScopeId } from 'vue'
 import { useAuthStore, useTaskStore } from '../store'
 import AddTask from '../components/AddTask.vue'
-import { deleteTask, getTasks } from '../API'
+import { deleteTask, getTasks, statusTask } from '../API'
 import router from '../router';
 
 const authStore = useAuthStore();
@@ -42,13 +43,28 @@ let tareas = []
 onMounted(() => {
     //await getTasks()
     taskStore.setTask()
+    taskStore.updateTask()
 })
 
-const eliminateTask = async () => {
-    await deleteTask()
-    taskStore.deleteTask()
-    taskStore.setTask()
+const eliminateTask = async (id) => {
+        taskStore.setTask()
+        await deleteTask(id)
+        taskStore.deleteTask(id)
+    }
+
+const doneTask = async (id) => {
+    let estado =  true
+    //taskStore.updateTask()
+    await statusTask(id, estado)
 }
+
+
+// const editTask = async (id) => {
+// //     taskStore.updateTask()
+// //     await updateTask(id)
+// //         taskStore.updateTask(id)
+// //     }
+
 
 </script>
 <style scoped>

@@ -31,5 +31,10 @@ const toggleMenu = () => {
 .navbar-start{
     flex: 1;
     justify-content: center;
+    background: grey;
+}
+
+.navbar-item {
+    color: white; 
 }
 </style>

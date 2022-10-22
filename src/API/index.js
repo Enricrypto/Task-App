@@ -39,7 +39,6 @@ export const getTasks = async () => {
     .from("task")
     .select("*")
     .order("id", { ascending: false });
-  console.log(response);
   return response.data;
   // TODO retornar la informacion de los task, ej response.data
 };
@@ -50,14 +49,28 @@ task: {
             description: 'Descripcion del task modificado'
         }
 */
-export const updateTask = async (taskId, task) => {
+export const statusTask = async (taskId, estado) => {
     const response = await supabase
         .from("task") 
-        .update(task)
+        .update({
+          // title: titulo,
+          // description: descripcion,
+          isCreated: estado
+        })
         .eq("id", taskId);
-
   // TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
-  console.log(response);
+};
+
+export const updateTask = async (taskId, estado) => {
+  const response = await supabase
+      .from("task") 
+      .update({
+        // title: titulo,
+        // description: descripcion,
+        isCreated: estado
+      })
+      .eq("id", taskId);
+// TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
 };
 
 export const deleteTask = async (taskId) => {
@@ -66,11 +79,9 @@ export const deleteTask = async (taskId) => {
         .delete()
         .eq("id", taskId);
   // TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
-  console.log(response);
 };
 
 export const logOut = async () => {
   const response = await supabase.auth.signOut();
   // TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
-  console.log(response);
 };
