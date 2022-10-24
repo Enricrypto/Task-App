@@ -61,13 +61,13 @@ export const statusTask = async (taskId, estado) => {
   // TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
 };
 
-export const updateTask = async (taskId, estado) => {
+export const updateTask = async (taskId, titulo, descripcion) => {
   const response = await supabase
       .from("task") 
       .update({
-        // title: titulo,
-        // description: descripcion,
-        isCreated: estado
+        title: titulo,
+        description: descripcion,
+        //isCreated: estado
       })
       .eq("id", taskId);
 // TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
