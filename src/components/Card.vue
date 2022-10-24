@@ -1,33 +1,86 @@
 <template>
-
-        <div class="card-done" v-if="estado = !task.isCreated">
-            <div v-if="!editMode">
-                <div>{{ props.task.title }} - {{ props.task.created_at }} </div>
+    <div class="card">
+        <div class="container" v-if="estado = !task.isCreated">
+            <div class="created-card" v-if="!editMode">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                    </div>
+                </div>
+                <div>
+                    {{ props.task.title }}
+                </div>
+                <time>
+                    {{ props.task.created_at }}
+                </time>
                 <div>{{ props.task.description }}</div>
-                <button @click="eliminateTask(props.task.id)">Eliminar</button>
-                <button @click="doneTask(props.task.id)">Marcar como hecho</button>
-                <button @click="toggleEdit(props.task.id)">Editar</button>
+                <div class="created-card buttons">
+                    <button @click="eliminateTask(props.task.id)">
+                        <fa icon="<fa-regular fa-trash" />
+                    </button>
+                    <button @click="doneTask(props.task.id)">
+                        <fa icon="check" />
+                    </button>
+                    <button @click="toggleEdit(props.task.id)">
+                        <fa icon="fa-solid fa-pen-to-square" />
+                    </button>
+                </div>
             </div>
             <div v-else>
-                <input v-model="title"  type="text">
-                <textarea v-model="description" ></textarea>
-                <button @click="editedTask(props.task.id)">Guardar</button>
-                <button @click="toggleEdit(props.task.id)">Cancel</button>
+                <div class="card-edit">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">John Smith</p>
+                            <p class="subtitle is-6">@johnsmith</p>
+                        </div>
+                    </div>
+                    <input v-model="title" type="text">
+                    <br>
+                    <textarea v-model="description" rows="20"></textarea>
+                    <br>
+                    <div class="card-edit buttons">
+                        <button @click="editedTask(props.task.id)">
+                            <fa icon="fa-floppy-disk" />
+                        </button>
+                        <button @click="toggleEdit(props.task.id)">
+                            <fa icon="fa-xmark" />
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card-edit" v-else>
-            <div>{{ props.task.title }} - {{ props.task.created_at }} </div>
+        <div class="card-done" v-else>
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4">John Smith</p>
+                    <p class="subtitle is-6">@johnsmith</p>
+                </div>
+            </div>
+            <div>
+                {{ props.task.title }}
+            </div>
+            <time>
+                {{ props.task.created_at }}
+            </time>
             <div>{{ props.task.description }}</div>
-            <button @click="eliminateTask(props.task.id)">Eliminar</button>
-            <button @click="undoTask(props.task.id)">Deshacer</button>
+            <div class="card-done buttons">
+                <button @click="eliminateTask(props.task.id)">
+                    <fa icon="<fa-regular fa-trash" />
+                </button>
+                <button @click="undoTask(props.task.id)">
+                    <fa icon="fa-rotate-left" />
+                </button>
+            </div>
         </div>
+    </div>
+
 
 </template>
 <script setup>
-import { ref, defineProps, onMounted, pushScopeId } from 'vue'
-import { useAuthStore, useTaskStore } from '../store'
-import AddTask from '../components/AddTask.vue'
-import { deleteTask, getTasks, statusTask, updateTask } from '../API'
+import { ref, defineProps } from 'vue'
+import { useTaskStore } from '../store'
+import { deleteTask, statusTask, updateTask } from '../API'
 
 const editMode = ref(false)
 
@@ -35,10 +88,9 @@ const toggleEdit = () => {
     editMode.value = !editMode.value
 }
 
-const authStore = useAuthStore();
 const taskStore = useTaskStore();
 
-const props = defineProps({ 
+const props = defineProps({
     task: Object
 })
 
@@ -72,18 +124,55 @@ const editedTask = async (id) => {
     toggleEdit()
 }
 
-
-
-
 </script>
 <style scoped>
-
-.card-done {
-    border: 1px solid black; 
-    background-color: yellow;
-    border-radius: 5px;
-    padding: 5px; 
-    box-shadow: 5px, 5px; 
+.card {
+    width: 280px;
+    height: 280px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 300ms;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
 }
 
+.card:hover {
+    transform: scale(1.1);
+}
+
+.created-card .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+.card-done {
+    background-color: orange;
+}
+
+.card-done .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+
+.card-edit {
+    height: 204px;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-edit .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 </style>

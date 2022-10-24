@@ -1,27 +1,28 @@
 <template>
 
-    <div class="section">
-        <div class="container">
-            <article v-if="!authStore.isAuth" class="message is-danger">
-                <div class="message-body">
-                    Iniciar sesion en la APP <br>
-                    <router-link :to="{ name: 'login' }">
-                        Ir a Login
-                    </router-link>
-                </div>
-            </article>
-            <div v-else>
-                <div class="title"> Hola {{ authStore.user.email }} </div>
-                <button @click="authStore.logout()" class="button is-danger">Cerrar Sesión</button>
-                <div>
-                    <AddTask />
-                </div>
-                <div class="section" v-for="task in taskStore.tasks" :key="task.id">
-                    <Card :task = "task" />
-                </div>
+    <div class="section-container">
+        <section class="login-post">
+            <div class="login">
+                <div v-if="!authStore.isAuth" class="message is-danger">
+                    <div class="message-body">
+                        Start your session <br>
+                        <router-link :to="{ name: 'login' }">
+                            Go to Login
+                        </router-link>
+                    </div>
+                </div> 
+            </div>
+            <div class="columns is-multiline is-centered is-mobile">
+                <AddTask />
+            </div>
+        </section>
+    </div>
+        <div class="columns is-multiline is-centered is-mobile">
+            <div class=" cards column is-8-mobile is-6-tablet is-3-desktop is-3-widescreen"
+                v-for="task in taskStore.tasks" :key="task.id">
+                <Card :task="task" />
             </div>
         </div>
-    </div>
 </template>
 <script setup>
 import { ref, onMounted, pushScopeId } from 'vue'
@@ -47,7 +48,19 @@ onMounted(() => {
 
 </script>
 <style scoped>
-.card-edit {
-    background-color: aquamarine;
+.cards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 </style>

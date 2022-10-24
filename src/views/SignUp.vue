@@ -83,4 +83,8 @@ const handleSignup = async () => {
 </script>
 <style scoped>
 
+.container {
+  width: 500px; 
+}
+
 </style>

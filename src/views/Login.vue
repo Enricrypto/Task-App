@@ -59,4 +59,12 @@ const onSubmit = async () => {
 </script>
 <style scoped>
 
+.container {
+  width: 500px; 
+}
+
+.section {
+  height: 100%
+}
+
 </style>
