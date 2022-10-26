@@ -5,7 +5,6 @@
 <script setup>
 
 import { onMounted } from 'vue';
-import { logIn } from './API'
 import Navbar from './components/Navbar.vue';
 import { useAuthStore } from './store/auth'
 

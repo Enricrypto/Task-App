@@ -1,5 +1,4 @@
 <template>
-
     <div class="section-container">
         <section class="login-post">
             <div class="login">
@@ -10,41 +9,57 @@
                             Go to Login
                         </router-link>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="columns is-multiline is-centered is-mobile">
-                <AddTask />
+                <button class="add-message" @click="toggleEdit">Create a Note
+                    <fa icon="fa-square-plus" />
+                </button>
+                <div class="modal" :class="{'is-active':editMode}">
+                    <div @click="toggleEdit" class="modal-background"></div>
+                    <div class="modal-content">
+                        <AddTask />
+                    </div>
+                    <button @click="toggleEdit" class="modal-close is-large" aria-label="close"></button>
+                </div>
             </div>
         </section>
     </div>
-        <div class="columns is-multiline is-centered is-mobile">
-            <div class=" cards column is-8-mobile is-6-tablet is-3-desktop is-3-widescreen"
-                v-for="task in taskStore.tasks" :key="task.id">
-                <Card :task="task" />
-            </div>
+    <div class="columns is-multiline is-centered is-mobile">
+        <div class=" cards column is-8-mobile is-6-tablet is-3-desktop is-3-widescreen" v-for="task in taskStore.tasks"
+            :key="task.id">
+            <Card :task="task" />
         </div>
+    </div>
+    <div>
+    </div>
+    <router-view></router-view>
+    <Footer></Footer>
 </template>
 <script setup>
-import { ref, onMounted, pushScopeId } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useAuthStore, useTaskStore } from '../store'
 import AddTask from '../components/AddTask.vue'
 import Card from '../components/Card.vue'
-import { deleteTask, getTasks, statusTask } from '../API'
-import router from '../router';
-
+import Footer from '../components/Footer.vue'
 
 const authStore = useAuthStore();
 const taskStore = useTaskStore();
 
 const tasks = ref('');
-let tareas = []
-
 
 onMounted(() => {
     //await getTasks()
     taskStore.setTask()
     //taskStore.updateTask()
 })
+
+const editMode = ref(false)
+
+const toggleEdit = (id) => {
+    editMode.value = !editMode.value;
+}
+
 
 </script>
 <style scoped>
@@ -61,6 +76,24 @@ onMounted(() => {
     flex-direction: column;
     align-items: center;
 }
+
+.message-body {
+    margin-top: 10px;
+}
+
+.add-message {
+    background-color: #FFFF;
+    border-radius: 10px;
+    border: none;
+    height: 30px; 
+    margin-top: 25px; 
+}
+
+.add-message:hover {
+    cursor: pointer;
+    background-color: pink; 
+}
+
 
 
 </style>

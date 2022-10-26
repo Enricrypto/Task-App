@@ -13,8 +13,8 @@ export const useTaskStore = defineStore("task", {
       const response = await getTasks();
       this.tasks = await response;
     },
-    updateTask(id, task) {
-      const findIndex = this.tasks.findIndex((elem) => {
+    updateTask(id) {
+      const findIndex = this.tasks.filter((elem) => {
         return elem.id === id;
       });
     },

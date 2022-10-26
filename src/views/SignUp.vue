@@ -7,7 +7,7 @@
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
-            <input v-model="name" class="input" type="text" placeholder="nombre">
+            <input v-model="name" class="input" type="text" placeholder="name">
           </div>
         </div>
         <div class="field">
@@ -25,12 +25,12 @@
         <div class="field">
           <label class="label">Confirm your Password</label>
           <div class="control">
-            <input v-model="confirmPassword" class="input" type="password" placeholder="password">
+            <input v-model="confirmPassword" class="input" type="password" placeholder="re-enter password">
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input class="button is-link is-fullwidth" type="submit">
+            <input id="button" class="button is-link is-fullwidth" type="submit">
           </div>
         </div>
       </form>
@@ -63,7 +63,7 @@ const verificarPassword = () => {
 const handleSignup = async () => {
   try {
     if (verificarPassword()) {
-    const response = await supabase.auth.signUp({
+      const response = await supabase.auth.signUp({
       email: email.value,
       password: password.value,
     });
@@ -77,14 +77,15 @@ const handleSignup = async () => {
   }
 };
 
-
-
-
 </script>
 <style scoped>
 
 .container {
   width: 500px; 
+}
+
+#button {
+  margin-top: 30px;
 }
 
 </style>

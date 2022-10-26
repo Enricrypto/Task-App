@@ -4,17 +4,18 @@
             <div class="created-card" v-if="!editMode">
                 <div class="media">
                     <div class="media-content">
-                        <p class="title is-4">John Smith</p>
-                        <p class="subtitle is-6">@johnsmith</p>
+                        <p class="title is-4">{{ authStore.user.email }}</p>
                     </div>
                 </div>
                 <div>
                     {{ props.task.title }}
                 </div>
+                <div>
+                    {{ props.task.description }}
+                </div>
                 <time>
                     {{ props.task.created_at }}
                 </time>
-                <div>{{ props.task.description }}</div>
                 <div class="created-card buttons">
                     <button @click="eliminateTask(props.task.id)">
                         <fa icon="<fa-regular fa-trash" />
@@ -31,13 +32,12 @@
                 <div class="card-edit">
                     <div class="media">
                         <div class="media-content">
-                            <p class="title is-4">John Smith</p>
-                            <p class="subtitle is-6">@johnsmith</p>
+                            <p class="title is-4">{{ authStore.user.email }}</p>
                         </div>
                     </div>
-                    <input v-model="title" type="text">
+                    <input v-model="title" type="text" :placeholder="props.task.title">
                     <br>
-                    <textarea v-model="description" rows="20"></textarea>
+                    <textarea v-model="description" rows="4" :placeholder="props.task.description"></textarea>
                     <br>
                     <div class="card-edit buttons">
                         <button @click="editedTask(props.task.id)">
@@ -53,17 +53,18 @@
         <div class="card-done" v-else>
             <div class="media">
                 <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                    <p class="subtitle is-6">@johnsmith</p>
+                    <p class="title is-4">{{ authStore.user.email }}</p>
                 </div>
             </div>
             <div>
                 {{ props.task.title }}
             </div>
+            <div>
+                {{ props.task.description }}
+            </div>
             <time>
                 {{ props.task.created_at }}
             </time>
-            <div>{{ props.task.description }}</div>
             <div class="card-done buttons">
                 <button @click="eliminateTask(props.task.id)">
                     <fa icon="<fa-regular fa-trash" />
@@ -79,16 +80,13 @@
 </template>
 <script setup>
 import { ref, defineProps } from 'vue'
-import { useTaskStore } from '../store'
+import { useTaskStore, useAuthStore } from '../store'
 import { deleteTask, statusTask, updateTask } from '../API'
 
 const editMode = ref(false)
 
-const toggleEdit = () => {
-    editMode.value = !editMode.value
-}
-
 const taskStore = useTaskStore();
+const authStore = useAuthStore();
 
 const props = defineProps({
     task: Object
@@ -100,9 +98,17 @@ const eliminateTask = async (id) => {
     taskStore.deleteTask(id)
 }
 
+let res;
 let estado = ref('')
 let title = ref('')
-let description = ref('')
+let description = ref(res)
+
+const toggleEdit = (id) => {
+    editMode.value = !editMode.value
+    // res = taskStore.updateTask(id)
+    // console.log(id)
+    // console.log(res);
+}
 
 const doneTask = async (id) => {
     estado = true
@@ -120,7 +126,7 @@ const undoTask = async (id) => {
 
 const editedTask = async (id) => {
     await updateTask(id, title.value, description.value)
-    taskStore.setTask()
+    console.log(await taskStore.setTask())
     toggleEdit()
 }
 
@@ -153,8 +159,13 @@ button {
     border: none;
 }
 
+button:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
 .card-done {
-    background-color: orange;
+    width: 260px;
 }
 
 .card-done .buttons {
@@ -164,8 +175,6 @@ button {
 }
 
 .card-edit {
-    height: 204px;
-    background-color: aquamarine;
     display: flex;
     flex-direction: column;
 }

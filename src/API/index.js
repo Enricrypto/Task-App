@@ -69,7 +69,7 @@ export const updateTask = async (taskId, titulo, descripcion) => {
         description: descripcion,
         //isCreated: estado
       })
-      .eq("id", taskId);
+      .eq("id", taskId)
 // TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
 };
 
@@ -85,3 +85,4 @@ export const logOut = async () => {
   const response = await supabase.auth.signOut();
   // TODO identificar el resulado y retornar lo que nos interesa, p.ej true si ha ido bien false si ha fallado
 };
+

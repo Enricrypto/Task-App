@@ -1,8 +1,8 @@
 <template>
-    <div class="mt-5">
+    <div class="new-post mt-5">
         <form class="add-task" @submit.prevent="onSubmit">
             <div class="field">
-                <label class="label">Post</label>
+                <label class="label">New Post</label>
                 <div class="control">
                     <input v-model="title" class="input" type="text" placeholder="Title">
                 </div>
@@ -29,7 +29,6 @@ const authStore = useAuthStore();
 const message = ref('');
 const title = ref('');
 const id = authStore.id;
-const email = authStore.user.email;
 
 const onSubmit = async () => {
     const response = await newTask(id, title.value, message.value)
@@ -42,6 +41,16 @@ const onSubmit = async () => {
 
 <style scoped>
 .add-task {
-    width: 400px; 
+    width: 400px;
+}
+
+.new-post {
+    display: flex;
+    justify-content: center;
+}
+
+.label {
+    color: #FFFF;
+
 }
 </style>
