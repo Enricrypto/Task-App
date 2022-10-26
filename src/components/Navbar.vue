@@ -2,9 +2,10 @@
     <nav class="navbar-container" role="navigation" aria-label="main navigation">
         <div class="navbar">
             <div class="logo">
-                <img src="https://res.cloudinary.com/dcg8x1th3/image/upload/v1666771568/APP/pngwing.com_1_suytbn.png"
-                    alt="logo">
-                <h1 class="logo-title">Noted</h1>
+                    <img width="30"
+                        src="https://res.cloudinary.com/dcg8x1th3/image/upload/v1666771568/APP/pngwing.com_1_suytbn.png"
+                        alt="logo">
+                    <h1 class="logo-title">Noted</h1>
             </div>
             <div class="menu">
                 <router-link class="navbar-item" :to="{ name: 'home' }">
@@ -60,7 +61,6 @@ const toggleMenu = () => {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding-left: 150px;
 }
 
 .navbar-item {
@@ -108,8 +108,7 @@ const toggleMenu = () => {
 }
 
 .logo {
-    width: 30px;
-    height: 30px;
+    width: 180px;
     display: flex;
     align-items: center;
 }

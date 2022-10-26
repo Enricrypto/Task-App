@@ -1,13 +1,20 @@
 <template>
   <footer class="footer-container">
     <div class="logo">
-        <img src="https://res.cloudinary.com/dcg8x1th3/image/upload/v1666771568/APP/pngwing.com_1_suytbn.png" alt="logo">
+      <img width="30" src="https://res.cloudinary.com/dcg8x1th3/image/upload/v1666771568/APP/pngwing.com_1_suytbn.png"
+        alt="logo">
       <h1 class="logo-title">Noted</h1>
     </div>
     <ul>
-      <li class="icon"><font-awesome-icon icon="fa-brands fa-twitter" /></li>
-      <li class="icon"></li>
-      <li class="icon"><fa icon="fa-brands fa-facebook" /></li>
+      <li class="icon">
+        <fa :icon="['fab', 'facebook']" />
+      </li>
+      <li class="icon">
+        <fa :icon="['fab', 'instagram']" />
+      </li>
+      <li class="icon">
+        <fa :icon="['fab', 'twitter']" />
+      </li>
     </ul>
     <div>
       <p>All Rights Reserved ©</p>
@@ -22,17 +29,15 @@
 <style scoped>
 .footer-container {
   background-color: #DAA520;
-  height: 150px; 
-  display: flex; 
+  height: 150px;
+  display: flex;
   align-items: center;
-  justify-content: space-around; 
+  justify-content: space-around;
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 180px;
   display: flex;
-  flex-direction: row;
   align-items: center;
 }
 
@@ -43,11 +48,11 @@
 }
 
 .icon {
-  color: black; 
+  color: black;
 }
 
 p {
-  color: black; 
+  color: black;
+  font-weight: bolder;
 }
-
 </style>

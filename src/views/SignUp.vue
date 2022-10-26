@@ -34,10 +34,9 @@
           </div>
         </div>
       </form>
-
     </div>
   </div>
-
+  <Footer></Footer>
 </template>
 
 <script setup>
@@ -45,6 +44,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router'
 import { supabase, registro } from '../API';
+import Footer from '../components/Footer.vue'
 
 const router = useRouter();
 const name = ref('');

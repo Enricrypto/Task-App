@@ -18,13 +18,13 @@
                 </time>
                 <div class="created-card buttons">
                     <button @click="eliminateTask(props.task.id)">
-                        <fa icon="<fa-regular fa-trash" />
+                        <fa icon="trash" />
                     </button>
                     <button @click="doneTask(props.task.id)">
                         <fa icon="check" />
                     </button>
                     <button @click="toggleEdit(props.task.id)">
-                        <fa icon="fa-solid fa-pen-to-square" />
+                        <fa icon="pen-to-square" />
                     </button>
                 </div>
             </div>
@@ -41,10 +41,10 @@
                     <br>
                     <div class="card-edit buttons">
                         <button @click="editedTask(props.task.id)">
-                            <fa icon="fa-floppy-disk" />
+                            <fa icon="floppy-disk" />
                         </button>
                         <button @click="toggleEdit(props.task.id)">
-                            <fa icon="fa-xmark" />
+                            <fa icon="xmark" />
                         </button>
                     </div>
                 </div>
@@ -67,10 +67,10 @@
             </time>
             <div class="card-done buttons">
                 <button @click="eliminateTask(props.task.id)">
-                    <fa icon="<fa-regular fa-trash" />
+                    <fa icon="trash" />
                 </button>
                 <button @click="undoTask(props.task.id)">
-                    <fa icon="fa-rotate-left" />
+                    <fa icon="rotate-left" />
                 </button>
             </div>
         </div>
