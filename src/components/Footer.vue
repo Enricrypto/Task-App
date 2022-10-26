@@ -1,7 +1,7 @@
 <template>
   <footer class="footer-container">
     <div class="logo">
-        <img src="../assets/pngwing.com (1).png" alt="logo">
+        <img src="https://res.cloudinary.com/dcg8x1th3/image/upload/v1666771568/APP/pngwing.com_1_suytbn.png" alt="logo">
       <h1 class="logo-title">Noted</h1>
     </div>
     <ul>
