@@ -5,7 +5,7 @@
         alt="logo">
       <h1 class="logo-title">Noted</h1>
     </div>
-    <ul>
+    <ul class="footer-icons">
       <li class="icon">
         <fa :icon="['fab', 'facebook']" />
       </li>
@@ -17,7 +17,7 @@
       </li>
     </ul>
     <div>
-      <p>All Rights Reserved ©</p>
+      <p>2022 © All Rights Reserved</p>
     </div>
   </footer>
 </template>
@@ -36,7 +36,7 @@
 }
 
 .logo {
-  width: 180px;
+  width: 110px;
   display: flex;
   align-items: center;
 }
@@ -54,5 +54,17 @@
 p {
   color: black;
   font-weight: bolder;
+}
+
+@media screen and (max-width: 420px) {
+
+.footer-container {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; 
+}
+
 }
 </style>

@@ -1,12 +1,19 @@
 <template>
-  <Navbar />
-  <router-view></router-view>
+  <!-- <Navbar /> -->
+  <Sidebar/>
+  <div :style="{ 'margin-left' : barWidth }">
+  <router-view />
+</div>
 </template>
 <script setup>
 
 import { onMounted } from 'vue';
 import Navbar from './components/Navbar.vue';
 import { useAuthStore } from './store/auth'
+import Sidebar from './components/Sidebar.vue'
+import { sidebarWidth } from './components/state'
+
+const barWidth = sidebarWidth;
 
 const auth = useAuthStore(); 
 onMounted(async () => {

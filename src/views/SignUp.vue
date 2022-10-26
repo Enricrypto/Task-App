@@ -36,7 +36,7 @@
       </form>
     </div>
   </div>
-  <Footer></Footer>
+  <!-- <Footer></Footer> -->
 </template>
 
 <script setup>
@@ -86,6 +86,13 @@ const handleSignup = async () => {
 
 #button {
   margin-top: 30px;
+}
+
+@media screen and (max-width: 420px) {
+
+  .container {
+    width: 180px; 
+  }
 }
 
 </style>

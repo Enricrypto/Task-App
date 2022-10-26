@@ -142,13 +142,13 @@ const toggleMenu = () => {
         width: 30px;
     }
 
-    .menu {
-        padding-left: 0px;
-    }
+    .logo {
+        width: 30px; 
+    } 
 
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 420px) {
 
     .hamburger {
         display: block;

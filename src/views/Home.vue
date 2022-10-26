@@ -13,7 +13,7 @@
             </div>
             <div class="columns is-multiline is-centered is-mobile">
                 <button class="add-message" @click="toggleEdit">Create a Note
-                    <fa icon="fa-square-plus" />
+                    <fa icon="plus" />
                 </button>
                 <div class="modal" :class="{'is-active':editMode}">
                     <div @click="toggleEdit" class="modal-background"></div>
@@ -33,8 +33,8 @@
     </div>
     <div>
     </div>
-    <router-view></router-view>
-    <Footer></Footer>
+    <router-view />
+    <!-- <Footer></Footer> -->
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
@@ -85,15 +85,20 @@ const toggleEdit = (id) => {
     background-color: #FFFF;
     border-radius: 10px;
     border: none;
-    height: 30px; 
+    height: 40px;
+    width: 140px; 
     margin-top: 25px; 
 }
 
 .add-message:hover {
     cursor: pointer;
-    background-color: pink; 
+    background-color: #CD853F; 
+    font-weight: 600;
 }
 
-
-
+@media screen and (max-width: 420px) {
+.modal-content {
+    width: 280px; 
+}
+}
 </style>

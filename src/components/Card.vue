@@ -53,18 +53,13 @@
         <div class="card-done" v-else>
             <div class="media">
                 <div class="media-content">
-                    <p class="title is-4">{{ authStore.user.email }}</p>
+                    <p class="title is-4">Good Job!</p>
+                </div>
+                <br>
+                <div class="done-icon">
+                    <fa icon="circle-check" />
                 </div>
             </div>
-            <div>
-                {{ props.task.title }}
-            </div>
-            <div>
-                {{ props.task.description }}
-            </div>
-            <time>
-                {{ props.task.created_at }}
-            </time>
             <div class="card-done buttons">
                 <button @click="eliminateTask(props.task.id)">
                     <fa icon="trash" />
@@ -183,5 +178,17 @@ button:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.done-icon {
+    color: #B88600; 
+    transform: scale(2.5);
 }
 </style>

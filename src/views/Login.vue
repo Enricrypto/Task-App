@@ -26,7 +26,7 @@
       </form>
     </div>
   </div>
-  <Footer></Footer>
+  <!-- <Footer></Footer> -->
 </template>
 <script setup>
 import { ref } from 'vue'
@@ -67,4 +67,10 @@ const onSubmit = async () => {
   height: 100%
 }
 
+@media screen and (max-width: 420px) {
+
+.container {
+  width: 180px; 
+}
+}
 </style>
