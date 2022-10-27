@@ -25,7 +25,7 @@
                         </router-link>
                     </div>
                     <div>
-                        <router-link class="logged-in" :to="{ name: 'home' }">
+                        <router-link class="logged-in" :to="{ name: 'login' }">
                             <div class="navbar-item" @click="authStore.logout()">
                                 <fa icon="fa-right-from-bracket" />
                             </div>
@@ -56,7 +56,7 @@
                                     <li class="navbar-item">Signup</li>
                                 </router-link>
                             </ul>
-                            <router-link class="logged-in" :to="{ name: 'home' }">
+                            <router-link class="logged-in" :to="{ name: 'login' }">
                                 <div class="logged-user" @click="authStore.logout()"> {{ authStore.user.email }}
                                     <li class="navbar-item">Logout</li>
                                 </div>
