@@ -71,7 +71,6 @@ h2 {
   padding-top: 30px;
 }
 
-
 @media screen and (max-width: 420px) {
 
   .container {

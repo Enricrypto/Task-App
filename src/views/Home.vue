@@ -25,7 +25,7 @@
             </div>
         </section>
         <div class="columns is-multiline is-centered is-mobile">
-            <div class=" cards column is-12-mobile is-6-tablet is-3-desktop is-3-widescreen"
+            <div class=" cards column is-12-mobile is-6-tablet is-6-desktop is-4-widescreen"
                 v-for="task in taskStore.tasks" :key="task.id">
                 <Card :task="task" />
             </div>
@@ -73,10 +73,10 @@ const toggleEdit = (id) => {
     align-items: center;
     padding-top: 30px;
     min-height: 100vh;
-    background: linear-gradient(-45deg, #0091E7, #005BEA,  #04F9F2, #0000FF);
+    background: linear-gradient(-45deg, #0091E7, #005BEA, #04F9F2, #0000FF);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
-    padding-bottom: 50px; 
+    padding-bottom: 50px;
 }
 
 @keyframes gradient {
@@ -113,18 +113,13 @@ const toggleEdit = (id) => {
     font-weight: 600;
 }
 
-
-@media only screeen 
-and (min-device-width: 768px) 
-  and (max-device-width: 1024px)  {
+@media only screeen and (min-device-width: 820px) and (max-device-width: 1180px) {
     .login {
-        margin-top: 20px; 
+        margin-top: 20px;
     }
 }
 
-@media only screen 
-  and (min-device-width: 414px) 
-  and (max-device-width: 736px)  {
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
     .modal-content {
         width: 280px;
     }

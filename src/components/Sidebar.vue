@@ -220,7 +220,7 @@ h1 {
     .open-sidebar {
         height: 1100px;
     }
-}
+} 
 
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
 
@@ -231,6 +231,7 @@ h1 {
         justify-content: center;
     }
 
-}
+} 
+
 </style>
 

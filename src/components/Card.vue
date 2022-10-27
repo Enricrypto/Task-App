@@ -221,6 +221,5 @@ button:hover {
 .card-edit.buttons {
     margin-bottom: 3px;
 }
-
 }
 </style>
