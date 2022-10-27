@@ -12,18 +12,20 @@
                 </div>
             </div>
             <div v-else class="columns is-multiline is-centered is-mobile">
-                <button class="add-message" @click="toggleEdit">Create a Note
-                    <fa icon="plus" />
-                </button>
-                <div class="modal" :class="{ 'is-active': editMode }">
-                    <div @click="toggleEdit" class="modal-background"></div>
-                    <div class="modal-content">
-                        <AddTask />
+                <div class="column is-12-mobile is-4-tablet is-6-desktop is-3-widescreen">
+                    <button class="add-message cards" @click="toggleEdit">Create a Note
+                        <fa icon="plus" />
+                    </button>
+                    <div class="modal" :class="{ 'is-active': editMode }">
+                        <div @click="toggleEdit" class="modal-background"></div>
+                        <div class="modal-content">
+                            <AddTask />
+                        </div>
+                        <button @click="toggleEdit" class="modal-close is-large" aria-label="close"></button>
                     </div>
-                    <button @click="toggleEdit" class="modal-close is-large" aria-label="close"></button>
                 </div>
                 <div class="columns is-multiline is-centered is-mobile">
-                    <div class=" cards column is-12-mobile is-6-tablet is-6-desktop is-4-widescreen"
+                    <div class=" cards column is-12-mobile is-6-tablet is-6-desktop is-3-widescreen"
                         v-for="task in taskStore.tasks" :key="task.id">
                         <Card :task="task" />
                     </div>
@@ -78,6 +80,11 @@ const toggleEdit = (id) => {
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     padding-bottom: 50px;
+}
+
+.add-message.cards {
+    background-color: #EBEBE8;
+    gap: 10px;
 }
 
 @keyframes gradient {

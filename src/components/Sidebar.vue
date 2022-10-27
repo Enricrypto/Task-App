@@ -25,7 +25,11 @@
                         </router-link>
                     </div>
                     <div>
-                        
+                        <router-link class="logged-in" :to="{ name: 'home' }">
+                            <div class="navbar-item" @click="authStore.logout()">
+                                <fa icon="fa-right-from-bracket" />
+                            </div>
+                        </router-link>
                     </div>
                 </div>
             </span>
@@ -93,6 +97,10 @@ const authStore = useAuthStore();
 const coll = collapsed;
 const toggle = toggleSidebar;
 const barWidth = sidebarWidth;
+
+const toggleEdit = (id) => {
+    editMode.value = !editMode.value;
+}
 
 </script>
 
@@ -167,7 +175,7 @@ const barWidth = sidebarWidth;
 }
 
 .collapse-icon:hover {
-    cursor: pointer; 
+    cursor: pointer;
     color: #05445E;
     transform: scale(1.5);
 }
@@ -216,7 +224,7 @@ h1 {
     .open-sidebar {
         height: 1100px;
     }
-} 
+}
 
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
 
@@ -227,7 +235,6 @@ h1 {
         justify-content: center;
     }
 
-} 
-
+}
 </style>
 

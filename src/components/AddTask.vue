@@ -51,6 +51,5 @@ const onSubmit = async () => {
 
 .label {
     color: #FFFF;
-
 }
 </style>
