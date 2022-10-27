@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="signup-section">
     <div class="container">
       <h2>Sign up for an account</h2>
       <br>
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="field">
-          <label class="label">Confirm your Password</label>
+          <label class="label">Confirm your password</label>
           <div class="control">
             <input v-model="confirmPassword" class="input" type="password" placeholder="re-enter password">
           </div>
@@ -36,7 +36,6 @@
       </form>
     </div>
   </div>
-  <!-- <Footer></Footer> -->
 </template>
 
 <script setup>
@@ -44,7 +43,6 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router'
 import { supabase, registro } from '../API';
-import Footer from '../components/Footer.vue'
 
 const router = useRouter();
 const name = ref('');
@@ -79,6 +77,16 @@ const handleSignup = async () => {
 
 </script>
 <style scoped>
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: black; 
+}
+.signup-section {
+  height: 100vh; 
+  padding-top: 30px; 
+}
 
 .container {
   width: 500px; 

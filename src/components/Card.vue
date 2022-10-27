@@ -4,7 +4,7 @@
             <div class="created-card" v-if="!editMode">
                 <div class="media">
                     <div class="media-content">
-                        <p class="title is-4">{{ authStore.user.email }}</p>
+                        <p class="title is-5">{{ authStore.user.email }}</p>
                     </div>
                 </div>
                 <div class="props">
@@ -132,13 +132,16 @@ const editedTask = async (id) => {
 .card {
     width: 280px;
     height: 280px;
-    background-color: white;
+    background-color: #EBEBE8;
     border-radius: 10px;
     padding: 10px;
     transition: 300ms;
     margin-top: 30px;
     display: flex;
     align-items: center;
+    -webkit-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
 }
 
 .card:hover {
@@ -190,7 +193,7 @@ button:hover {
 }
 
 .done-icon {
-    color: #B88600;
+    color: #189AB4;
     transform: scale(2.5);
 }
 
@@ -198,5 +201,26 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media (max-width:420px) {
+.card {
+    width: 220px;
+    height: 220px;
+}
+
+.card-done {
+    margin: 0px; 
+    width: 200px; 
+}
+
+.media {
+    width: 200px; 
+}
+
+.card-edit.buttons {
+    margin-bottom: 3px;
+}
+
 }
 </style>

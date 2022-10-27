@@ -1,5 +1,4 @@
 <template>
-  <!-- <Navbar /> -->
   <Sidebar/>
   <div :style="{ 'margin-left' : barWidth }">
   <router-view />
@@ -8,7 +7,6 @@
 <script setup>
 
 import { onMounted } from 'vue';
-import Navbar from './components/Navbar.vue';
 import { useAuthStore } from './store/auth'
 import Sidebar from './components/Sidebar.vue'
 import { sidebarWidth } from './components/state'

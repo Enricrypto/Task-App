@@ -26,52 +26,58 @@
                     </div>
                     <div>
                         <router-link class="logged-in" :to="{ name: 'home' }">
-                                <div class="navbar-item" @click="authStore.logout()">
-                                    <fa icon="fa-right-from-bracket" />
-                                </div>
+                            <div class="navbar-item" @click="authStore.logout()">
+                                <fa icon="fa-right-from-bracket" />
+                            </div>
                         </router-link>
                     </div>
                 </div>
             </span>
             <span v-else>
-                <div class="logo">
-                    <img width="30"
-                        src="https://res.cloudinary.com/dcg8x1th3/image/upload/v1666771568/APP/pngwing.com_1_suytbn.png"
-                        alt="logo">
-                    <h1 class="logo-title">Noted</h1>
-                </div>
-                <ul>
-                    <router-link :to="{ name: 'home' }">
-                        <li class="navbar-item">Home</li>
-                    </router-link>
-                    <router-link :to="{ name: 'login' }">
-                        <li class="navbar-item">Login</li>
-                    </router-link>
-                    <router-link :to="{ name: 'signup' }">
-                        <li class="navbar-item">Signup</li>
-                    </router-link>
-                    <li>
-                        <router-link class="logged-in" :to="{ name: 'home' }">
-                            <div class="logged-user" @click="authStore.logout()"> {{ authStore.user.email }} 
-                                <li class="navbar-item">Logout</li>
+                <div class="open-sidebar">
+                    <div class="top-sidebar">
+                        <div class="logo">
+                            <div class="icon-pen">
+                                <fa icon="fa-pen-nib" />
                             </div>
-                        </router-link>
-                    </li>
-                </ul>
-                <div class="bottom-sidebar">
-                    <ul class="footer-icons">
-                        <li class="icon">
-                            <fa :icon="['fab', 'facebook']" />
-                        </li>
-                        <li class="icon">
-                            <fa :icon="['fab', 'instagram']" />
-                        </li>
-                        <li class="icon">
-                            <fa :icon="['fab', 'twitter']" />
-                        </li>
-                    </ul>
-                    <div>
-                        <h1>2022 © All Rights Reserved</h1>
+                            <div class="logo-title">
+                                <h1>Noted</h1>
+                            </div>
+                        </div>
+                        <div class="sidebar-menu">
+                            <ul>
+                                <router-link :to="{ name: 'home' }">
+                                    <li class="navbar-item">Home</li>
+                                </router-link>
+                                <router-link :to="{ name: 'login' }">
+                                    <li class="navbar-item">Login</li>
+                                </router-link>
+                                <router-link :to="{ name: 'signup' }">
+                                    <li class="navbar-item">Signup</li>
+                                </router-link>
+                            </ul>
+                            <router-link class="logged-in" :to="{ name: 'home' }">
+                                <div class="logged-user" @click="authStore.logout()"> {{ authStore.user.email }}
+                                    <li class="navbar-item">Logout</li>
+                                </div>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="bottom-sidebar">
+                        <ul class="footer-icons">
+                            <li class="icon">
+                                <fa :icon="['fab', 'facebook']" />
+                            </li>
+                            <li class="icon">
+                                <fa :icon="['fab', 'instagram']" />
+                            </li>
+                            <li class="icon">
+                                <fa :icon="['fab', 'twitter']" />
+                            </li>
+                        </ul>
+                        <div>
+                            <h1>2022 © All Rights Reserved</h1>
+                        </div>
                     </div>
                 </div>
             </span>
@@ -92,11 +98,14 @@ const coll = collapsed;
 const toggle = toggleSidebar;
 const barWidth = sidebarWidth;
 
-
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lobster&family=Oswald&family=Roboto&display=swap');
+
+.icon-pen {
+    color: #05445E;
+}
 
 .logo {
     width: 160px;
@@ -104,10 +113,11 @@ const barWidth = sidebarWidth;
     align-items: center;
     justify-content: center;
     margin-top: 50px;
+    gap: 5px;
 }
 
 .logo-title {
-    color: black;
+    color: #05445E;
     font-family: 'Lobster', serif;
     font-size: 30px;
 }
@@ -117,25 +127,25 @@ const barWidth = sidebarWidth;
 }
 
 .icon-top:hover {
-    color: #b55f09;
+    color: #189AB4;
     transform: scale(1.1);
 }
 
 .navbar-item {
-    color: #7f3f00;
+    color: #189AB4;
 }
 
 .navbar-item:hover {
-    color: #b55f09;
+    color: #05445E;
     transform: scale(1.1);
 }
 
 .logged-user {
-    color: #442200;
+    color: #189AB4;
 }
 
 .sidebar {
-    background-color: #DAA520;
+    background-color: #D4F1F4;
 
     float: left;
     position: fixed;
@@ -144,7 +154,7 @@ const barWidth = sidebarWidth;
     left: 0;
     bottom: 0;
 
-    transition: 0.7s ease;
+    transition: 0.3s ease;
 
     display: flex;
     flex-direction: column;
@@ -155,7 +165,7 @@ const barWidth = sidebarWidth;
     bottom: -1;
     padding: 0.75em;
 
-    color: black;
+    color: #189AB4;
 
     transition: 0.2s linear;
 }
@@ -166,20 +176,55 @@ const barWidth = sidebarWidth;
 }
 
 .bottom-sidebar {
-    color: black;
+    color: #189AB4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.open-sidebar {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin-top: 480px;
+    height: 840px;
+}
 
+.sidebar-menu {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logged-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
     text-align: center;
 }
-</style>
 
-@media only screen and (max-width:820px) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .open-sidebar {
+        height: 1100px;
+    }
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
 }
+</style>
+

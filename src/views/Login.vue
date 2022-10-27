@@ -1,10 +1,9 @@
 <template>
-  <div class="section">
+  <div class="login-section">
     <div class="container">
       <h2>Log into your account</h2>
       <br>
       <form @submit.prevent="onSubmit">
-
         <div class="field">
           <label class="label">Email</label>
           <div class="control">
@@ -19,21 +18,19 @@
         </div>
         <div class="field">
           <div class="control">
-            <button class="button is-link is-fullwidth" type="submit" placeholder="Text input">SUBMIT</button>
+            <button class="button is-link is-fullwidth" type="submit" placeholder="Text input">Submit</button>
 
           </div>
         </div>
       </form>
     </div>
   </div>
-  <!-- <Footer></Footer> -->
 </template>
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../store/auth'
 import { logIn } from '../API'
-import Footer from '../components/Footer.vue'
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -58,19 +55,27 @@ const onSubmit = async () => {
 
 </script>
 <style scoped>
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+}
 
 .container {
-  width: 500px; 
+  width: 500px;
+
 }
 
-.section {
-  height: 100%
+.login-section {
+  height: 100vh;
+  padding-top: 30px;
 }
+
 
 @media screen and (max-width: 420px) {
 
-.container {
-  width: 180px; 
-}
+  .container {
+    width: 180px;
+  }
 }
 </style>
