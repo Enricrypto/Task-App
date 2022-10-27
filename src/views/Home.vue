@@ -1,8 +1,8 @@
 <template>
     <div class="home-container">
         <section class="login-post">
-            <div class="login">
-                <div v-if="!authStore.isAuth" class="message is-danger">
+            <div v-if="!authStore.isAuth" class="login">
+                <div class="message is-danger">
                     <div class="message-body">
                         Start your session <br>
                         <router-link :to="{ name: 'login' }">
@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="columns is-multiline is-centered is-mobile">
+            <div v-else class="columns is-multiline is-centered is-mobile">
                 <button class="add-message" @click="toggleEdit">Create a Note
                     <fa icon="plus" />
                 </button>
@@ -22,14 +22,15 @@
                     </div>
                     <button @click="toggleEdit" class="modal-close is-large" aria-label="close"></button>
                 </div>
+                <div class="columns is-multiline is-centered is-mobile">
+                    <div class=" cards column is-12-mobile is-6-tablet is-6-desktop is-4-widescreen"
+                        v-for="task in taskStore.tasks" :key="task.id">
+                        <Card :task="task" />
+                    </div>
+                </div>
             </div>
         </section>
-        <div class="columns is-multiline is-centered is-mobile">
-            <div class=" cards column is-12-mobile is-6-tablet is-6-desktop is-4-widescreen"
-                v-for="task in taskStore.tasks" :key="task.id">
-                <Card :task="task" />
-            </div>
-        </div>
+
     </div>
     <router-view />
 </template>
