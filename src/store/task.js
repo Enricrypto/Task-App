@@ -1,4 +1,3 @@
-import { slotFlagsText } from "@vue/shared";
 import { defineStore } from "pinia";
 import { newTask, getTasks, updateTask, deleteTask } from "../API/index";
 

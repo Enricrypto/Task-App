@@ -1,6 +1,6 @@
 <template>
     <div class="new-post mt-5">
-        <form class="add-task" @submit.prevent="onSubmit">
+        <form class="add-task" @submit.prevent="onSubmit" :to="{ name: 'home' }">
             <div class="field">
                 <label class="label">New Post</label>
                 <div class="control">

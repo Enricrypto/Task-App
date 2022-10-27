@@ -170,6 +170,12 @@ const barWidth = sidebarWidth;
     transition: 0.2s linear;
 }
 
+.collapse-icon:hover {
+    cursor: pointer; 
+    color: #05445E;
+    transform: scale(1.5);
+}
+
 .rotate-180 {
     transform: rotate(180deg);
     transition: 0.2s linear;

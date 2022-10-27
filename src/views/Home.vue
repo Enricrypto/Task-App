@@ -25,7 +25,7 @@
             </div>
         </section>
         <div class="columns is-multiline is-centered is-mobile">
-            <div class=" cards column is-15-mobile is-6-tablet is-3-desktop is-3-widescreen"
+            <div class=" cards column is-12-mobile is-6-tablet is-3-desktop is-3-widescreen"
                 v-for="task in taskStore.tasks" :key="task.id">
                 <Card :task="task" />
             </div>
@@ -38,7 +38,6 @@ import { ref, onMounted } from 'vue'
 import { useAuthStore, useTaskStore } from '../store'
 import AddTask from '../components/AddTask.vue'
 import Card from '../components/Card.vue'
-import Sidebar from '../components/Sidebar.vue'
 
 const authStore = useAuthStore();
 const taskStore = useTaskStore();

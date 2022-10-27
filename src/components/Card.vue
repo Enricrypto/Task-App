@@ -34,7 +34,7 @@
                 <div class="card-edit">
                     <div class="media">
                         <div class="media-content">
-                            <p class="title is-4">Edit me!</p>
+                            <p class="title is-4">Edit Note!</p>
                         </div>
                     </div>
                     <input v-model="title" type="text" :placeholder="props.task.title">
