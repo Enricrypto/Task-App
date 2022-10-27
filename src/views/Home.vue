@@ -15,7 +15,7 @@
                 <button class="add-message" @click="toggleEdit">Create a Note
                     <fa icon="plus" />
                 </button>
-                <div class="modal" :class="{'is-active':editMode}">
+                <div class="modal" :class="{  'is-active':  editMode  }">
                     <div @click="toggleEdit" class="modal-background"></div>
                     <div class="modal-content">
                         <AddTask />
@@ -26,7 +26,7 @@
         </section>
     </div>
     <div class="columns is-multiline is-centered is-mobile">
-        <div class=" cards column is-8-mobile is-6-tablet is-3-desktop is-3-widescreen" v-for="task in taskStore.tasks"
+        <div class=" cards column is-15-mobile is-6-tablet is-3-desktop is-3-widescreen" v-for="task in taskStore.tasks"
             :key="task.id">
             <Card :task="task" />
         </div>
@@ -86,19 +86,19 @@ const toggleEdit = (id) => {
     border-radius: 10px;
     border: none;
     height: 40px;
-    width: 140px; 
-    margin-top: 25px; 
+    width: 140px;
+    margin-top: 25px;
 }
 
 .add-message:hover {
     cursor: pointer;
-    background-color: #CD853F; 
+    background-color: #CD853F;
     font-weight: 600;
 }
 
 @media screen and (max-width: 420px) {
-.modal-content {
-    width: 280px; 
-}
+    .modal-content {
+        width: 280px;
+    }
 }
 </style>

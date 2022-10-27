@@ -7,15 +7,17 @@
                         <p class="title is-4">{{ authStore.user.email }}</p>
                     </div>
                 </div>
-                <div>
-                    {{ props.task.title }}
+                <div class="props">
+                    <div>
+                        {{ props.task.title }}
+                    </div>
+                    <div>
+                        {{ props.task.description }}
+                    </div>
+                    <time>
+                        {{ props.task.created_at }}
+                    </time>
                 </div>
-                <div>
-                    {{ props.task.description }}
-                </div>
-                <time>
-                    {{ props.task.created_at }}
-                </time>
                 <div class="created-card buttons">
                     <button @click="eliminateTask(props.task.id)">
                         <fa icon="trash" />
@@ -32,7 +34,7 @@
                 <div class="card-edit">
                     <div class="media">
                         <div class="media-content">
-                            <p class="title is-4">{{ authStore.user.email }}</p>
+                            <p class="title is-4">Edit me!</p>
                         </div>
                     </div>
                     <input v-model="title" type="text" :placeholder="props.task.title">
@@ -184,11 +186,17 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 .done-icon {
-    color: #B88600; 
+    color: #B88600;
     transform: scale(2.5);
+}
+
+.props {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>

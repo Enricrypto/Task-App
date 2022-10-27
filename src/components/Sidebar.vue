@@ -179,3 +179,7 @@ h1 {
     text-align: center;
 }
 </style>
+
+@media only screen and (max-width:820px) {
+
+}
