@@ -220,5 +220,21 @@ h1 {
     text-align: center;
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .open-sidebar {
+        height: 1100px;
+    }
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
 </style>
 
