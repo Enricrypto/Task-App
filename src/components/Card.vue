@@ -7,7 +7,7 @@
                         <p class="title is-5">{{ authStore.user.email }}</p>
                     </div>
                 </div>
-                <div class="props">
+                <div class="card-content">
                     <div>
                         {{ props.task.title }}
                     </div>
@@ -52,28 +52,29 @@
                 </div>
             </div>
         </div>
-        <div class="card-done" v-else>
-            <div class="media">
-                <div class="media-content">
-                    <p class="title is-4">Good Job!</p>
+        <div class="carta" v-else>
+            <div>
+                <div class="container">
+                    <div class="media card-done">
+                        <div>
+                            <p class="title is-4">Good Job!</p>
+                        </div>
+                        <div class="done-icon">
+                            <fa icon="circle-check" />
+                        </div>
+                        <div class="card-done buttons">
+                            <button @click="eliminateTask(props.task.id)">
+                                <fa icon="trash" />
+                            </button>
+                            <button @click="undoTask(props.task.id)">
+                                <fa icon="rotate-left" />
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <br>
-                <div class="done-icon">
-                    <fa icon="circle-check" />
-                </div>
-            </div>
-            <div class="card-done buttons">
-                <button @click="eliminateTask(props.task.id)">
-                    <fa icon="trash" />
-                </button>
-                <button @click="undoTask(props.task.id)">
-                    <fa icon="rotate-left" />
-                </button>
             </div>
         </div>
     </div>
-
-
 </template>
 <script setup>
 import { ref, defineProps } from 'vue'
@@ -129,9 +130,21 @@ const editedTask = async (id) => {
 
 </script>
 <style scoped>
+
+.media.card-done {
+min-height: 250px;
+min-width: 280px; 
+display: flex;
+flex-direction: column; 
+justify-content: space-around; 
+align-items: center; 
+margin-left: auto; 
+margin-right: auto; 
+}
+
 .card {
-    width: 280px;
-    height: 280px;
+    min-width: 280px;
+    min-height: 280px;
     background-color: #EBEBE8;
     border-radius: 10px;
     padding: 10px;
@@ -164,14 +177,11 @@ button:hover {
     transform: scale(1.5);
 }
 
-.card-done {
-    width: 260px;
-}
-
-.card-done .buttons {
+.card-done.buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-top: 15px;
+    width: 100px;
 }
 
 .card-edit {
@@ -197,29 +207,9 @@ button:hover {
     transform: scale(2.5);
 }
 
-.props {
+.card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-@media (max-width:420px) {
-.card {
-    width: 220px;
-    height: 220px;
-}
-
-.card-done {
-    margin: 0px; 
-    width: 200px; 
-}
-
-.media {
-    width: 200px; 
-}
-
-.card-edit.buttons {
-    margin-bottom: 3px;
-}
 }
 </style>
